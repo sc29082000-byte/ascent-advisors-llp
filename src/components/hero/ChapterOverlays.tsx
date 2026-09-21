@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowUpRight, 
@@ -46,19 +46,19 @@ export const ChapterOverlays: React.FC<ChapterOverlaysProps> = ({
   return (
     <div className="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between p-6 sm:p-10 lg:p-14">
       {/* Top HUD Telemetry Bar */}
-      <div className="flex items-center justify-between text-[11px] font-mono tracking-widest text-white/40 pt-16 sm:pt-10">
+      <div className="flex items-center justify-between text-[11px] font-mono tracking-wider text-[#91A4BD]/70 pt-16 sm:pt-10">
         <div className="flex items-center gap-3">
-          <span className="inline-block w-2 h-2 rounded-full bg-[#00D6FF] shadow-[0_0_8px_#00D6FF]" />
-          <span className="text-white/70">ASCENT ADVISORY SYSTEM // V4.2</span>
+          <span className="inline-block w-2 h-2 rounded-full bg-[#00D4FF] shadow-[0_0_8px_#00D4FF]" />
+          <span className="text-[#F5F8FF] font-semibold">ASCENT ADVISORS LLP // PRACTICE DESK</span>
         </div>
-        <div className="hidden sm:flex items-center gap-6">
-          <span>PROGRESS: {(progress * 100).toFixed(0)}%</span>
+        <div className="hidden sm:flex items-center gap-6 text-[#91A4BD]">
+          <span>TELEMETRY: {(progress * 100).toFixed(0)}%</span>
           <span>PILLARS: GST / MCA / DIRECT TAX</span>
-          <span className="text-emerald-400">STATUS: VERIFIED</span>
+          <span className="text-[#18C8A0] font-medium">STATUS: VERIFIED</span>
         </div>
       </div>
 
-      {/* Dynamic Chapter Overlays (Positioned to complement 3D model focal points) */}
+      {/* Dynamic Chapter Overlays */}
       <div className="my-auto w-full">
         <AnimatePresence mode="wait">
           {/* CHAPTER 01: 0 - 18% (Positioned on the LEFT to give the 3D logo full breathing room on the right) */}
@@ -72,46 +72,50 @@ export const ChapterOverlays: React.FC<ChapterOverlaysProps> = ({
               style={{ transform: `translateY(${(intraProgress - 0.5) * -15}px)` }}
               className="text-left flex flex-col items-start pointer-events-auto max-w-xl lg:max-w-2xl ml-2 sm:ml-6 lg:ml-10"
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#07090C]/80 border border-white/[0.12] text-xs font-mono text-[#00D6FF] mb-6 backdrop-blur-xl shadow-lg">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#071225] border border-[rgba(70,150,220,0.25)] text-xs font-mono text-[#00D4FF] mb-5 shadow-sm">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>COMPLIANCE | ADVISORY | GROWTH</span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter text-white uppercase leading-[1.05] drop-shadow-2xl">
+              <div className="text-xs font-mono tracking-[0.2em] text-[#91A4BD] uppercase mb-2">
+                ASCENT ADVISORS LLP
+              </div>
+
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#F5F8FF] uppercase leading-[1.05]">
                 Compliance. <br />
                 <span className="text-gradient-cyan">Clarity.</span> Growth.
               </h1>
 
-              <p className="mt-5 text-sm sm:text-base lg:text-lg text-white/75 max-w-lg font-normal leading-relaxed">
-                Strategic compliance and advisory solutions that help businesses stay compliant, make informed decisions, and move forward with confidence.
+              <p className="mt-5 text-sm sm:text-base lg:text-lg text-[#91A4BD] max-w-lg font-normal leading-relaxed">
+                Strategic compliance and advisory solutions helping businesses navigate statutory frameworks, mitigate regulatory friction, and move forward with confidence.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <button
                   onClick={onScrollToServices}
-                  className="px-6 py-3 rounded-full bg-white text-black font-semibold text-xs sm:text-sm hover:bg-white/90 transition-all duration-300 shadow-xl active:scale-95 flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-lg bg-[#1769FF] hover:bg-[#00D4FF] hover:text-[#030817] text-[#F5F8FF] font-semibold text-xs sm:text-sm shadow-[0_0_20px_rgba(23,105,255,0.3)] transition-all duration-300 active:scale-95 flex items-center gap-2 border border-[#00D4FF]/30"
                 >
-                  <span>Explore Our Services</span>
-                  <ChevronDown className="w-4 h-4 text-black/70" />
+                  <span>Explore Statutory Scope</span>
+                  <ChevronDown className="w-4 h-4" />
                 </button>
 
                 <button
                   onClick={onOpenAdvisor}
-                  className="px-6 py-3 rounded-full bg-[#07090C]/85 border border-[#00D6FF]/40 text-white font-medium text-xs sm:text-sm hover:bg-white/[0.08] transition-all duration-300 shadow-glow-blue flex items-center gap-2 active:scale-95 backdrop-blur-md"
+                  className="px-5 py-2.5 rounded-lg bg-[#071225]/85 hover:bg-[#0A1629] border border-[rgba(70,150,220,0.28)] text-[#F5F8FF] font-medium text-xs sm:text-sm transition-all duration-300 flex items-center gap-2 active:scale-95"
                 >
                   <span>Talk to an Advisor</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#00D6FF]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#00D4FF]" />
                 </button>
               </div>
 
-              <div className="mt-8 flex items-center gap-2 text-[11px] font-mono text-white/40 tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00D6FF] animate-pulse" />
-                <span>SCROLL TO DISASSEMBLE REGULATORY LAYERS</span>
+              <div className="mt-8 flex items-center gap-2 text-[11px] font-mono text-[#91A4BD]/70 tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00D4FF] animate-pulse" />
+                <span>SCROLL TO EXPLORE REGULATORY GOVERNANCE</span>
               </div>
             </motion.div>
           )}
 
-          {/* CHAPTER 02: 18 - 38% (Positioned on the LEFT while 3D shards float across the center/right) */}
+          {/* CHAPTER 02: 18 - 38% */}
           {activeChapter === 1 && (
             <motion.div
               key="chapter-2"
@@ -120,39 +124,39 @@ export const ChapterOverlays: React.FC<ChapterOverlaysProps> = ({
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               style={{ transform: `translateY(${(intraProgress - 0.5) * -15}px)` }}
-              className="pointer-events-auto max-w-xl ml-2 sm:ml-6 lg:ml-10 bg-[#07090C]/85 backdrop-blur-2xl border border-white/[0.1] p-8 rounded-2xl shadow-2xl"
+              className="pointer-events-auto max-w-xl ml-2 sm:ml-6 lg:ml-10 bg-[#0A1629] border border-[rgba(70,150,220,0.18)] p-8 rounded-xl shadow-corporate-card"
             >
-              <div className="flex items-center gap-2 text-xs font-mono text-[#00D6FF] mb-3">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#00D4FF] mb-3">
                 <Cpu className="w-4 h-4" />
-                <span>CHAPTER 02 // REGULATORY COMPLEXITY</span>
+                <span>CHAPTER 02 // REGULATORY ARCHITECTURE</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#F5F8FF] leading-tight">
                 Business is complex. <br />
                 <span className="text-gradient-cyan">Compliance shouldn't be.</span>
               </h2>
 
-              <p className="mt-4 text-xs sm:text-sm text-white/75 leading-relaxed">
-                From registrations and taxation to audits and regulatory filings, we bring your critical compliance requirements together through one connected advisory approach.
+              <p className="mt-4 text-xs sm:text-sm text-[#91A4BD] leading-relaxed">
+                From registrations and taxation to audits and regulatory filings, we bring your critical statutory requirements together through one integrated advisory architecture.
               </p>
 
               {/* Technical Badges */}
-              <div className="mt-6 grid grid-cols-3 gap-2.5 pt-4 border-t border-white/[0.06]">
+              <div className="mt-6 grid grid-cols-3 gap-2.5 pt-4 border-t border-[rgba(70,150,220,0.18)]">
                 {[
-                  { label: 'PRECISION', desc: 'Zero defect statutory files' },
-                  { label: 'SYSTEMS', desc: 'Connected data loop' },
-                  { label: 'STRUCTURE', desc: 'Corporate governance' },
+                  { label: 'PRECISION', desc: 'Zero-defect statutory files' },
+                  { label: 'SYSTEMS', desc: 'Continuous compliance loop' },
+                  { label: 'STRUCTURE', desc: 'Boardroom governance' },
                 ].map((badge) => (
-                  <div key={badge.label} className="p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
-                    <div className="text-[10px] font-mono font-semibold text-[#00D6FF]">{badge.label}</div>
-                    <div className="text-[9px] text-white/50 mt-0.5 leading-tight">{badge.desc}</div>
+                  <div key={badge.label} className="p-2.5 rounded-lg bg-[#071225] border border-[rgba(70,150,220,0.15)]">
+                    <div className="text-[10px] font-mono font-semibold text-[#00D4FF]">{badge.label}</div>
+                    <div className="text-[9px] text-[#91A4BD] mt-0.5 leading-tight">{badge.desc}</div>
                   </div>
                 ))}
               </div>
             </motion.div>
           )}
 
-          {/* CHAPTER 03: 38 - 62% (TOP title + BOTTOM telemetry strip, keeping center 3D pedestals 100% visible) */}
+          {/* CHAPTER 03: 38 - 62% */}
           {activeChapter === 2 && (
             <motion.div
               key="chapter-3"
@@ -162,59 +166,59 @@ export const ChapterOverlays: React.FC<ChapterOverlaysProps> = ({
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="pointer-events-auto w-full flex flex-col justify-between min-h-[60vh]"
             >
-              {/* Top Header - Sits neatly above the 3 pedestals */}
-              <div className="text-center max-w-2xl mx-auto bg-[#07090C]/75 backdrop-blur-xl border border-white/[0.08] px-6 py-4 rounded-2xl shadow-xl">
-                <div className="inline-flex items-center gap-2 text-[11px] font-mono text-[#00D6FF] mb-1">
+              {/* Top Header */}
+              <div className="text-center max-w-2xl mx-auto bg-[#071225]/90 border border-[rgba(70,150,220,0.18)] px-6 py-4 rounded-xl shadow-lg">
+                <div className="inline-flex items-center gap-2 text-[11px] font-mono text-[#00D4FF] mb-1">
                   <Layers className="w-3.5 h-3.5" />
-                  <span>CHAPTER 03 // THE THREE PILLARS</span>
+                  <span>CHAPTER 03 // THE STATUTORY PILLARS</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                  Everything your business needs <span className="text-gradient-cyan">to stay compliant.</span>
+                <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#F5F8FF]">
+                  Everything your enterprise needs <span className="text-gradient-cyan">to stay compliant.</span>
                 </h2>
               </div>
 
-              {/* Bottom HUD Aligned with the 3 Pedestals (GST on left, MCA in center, Income Tax on right) */}
+              {/* Bottom HUD Aligned with the 3 Pedestals */}
               <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mt-auto pt-6">
                 {/* GST Pillar Label */}
-                <div className="bg-[#07090C]/85 backdrop-blur-xl border border-emerald-500/30 p-3.5 rounded-xl hover:border-emerald-400/60 transition-all shadow-lg">
+                <div className="bg-[#0A1629] border border-[rgba(70,150,220,0.22)] hover:border-[#18C8A0]/60 p-4 rounded-xl transition-all shadow-corporate-card">
                   <div className="flex items-center justify-between text-[11px] font-mono">
-                    <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-semibold">
+                    <span className="px-2 py-0.5 rounded bg-[#18C8A0]/15 text-[#18C8A0] font-semibold">
                       INDIRECT TAX
                     </span>
-                    <span className="text-white/40">PILLAR 01</span>
+                    <span className="text-[#91A4BD]">PILLAR 01</span>
                   </div>
-                  <div className="text-sm font-bold text-white mt-1.5">GST & Indirect Tax</div>
-                  <div className="text-[11px] text-white/50 mt-0.5">GSTR-1, GSTR-3B, E-Invoicing & ITC</div>
+                  <div className="text-sm font-bold text-[#F5F8FF] mt-1.5">GST & Indirect Tax</div>
+                  <div className="text-[11px] text-[#91A4BD] mt-0.5">GSTR-1, GSTR-3B, E-Invoicing & 2B ITC</div>
                 </div>
 
                 {/* MCA Pillar Label */}
-                <div className="bg-[#07090C]/85 backdrop-blur-xl border border-blue-500/30 p-3.5 rounded-xl hover:border-blue-400/60 transition-all shadow-lg">
+                <div className="bg-[#0A1629] border border-[rgba(70,150,220,0.22)] hover:border-[#1769FF]/60 p-4 rounded-xl transition-all shadow-corporate-card">
                   <div className="flex items-center justify-between text-[11px] font-mono">
-                    <span className="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-semibold">
+                    <span className="px-2 py-0.5 rounded bg-[#1769FF]/15 text-[#1769FF] font-semibold">
                       CORPORATE
                     </span>
-                    <span className="text-white/40">PILLAR 02</span>
+                    <span className="text-[#91A4BD]">PILLAR 02</span>
                   </div>
-                  <div className="text-sm font-bold text-white mt-1.5">ROC & Corporate Compliance</div>
-                  <div className="text-[11px] text-white/50 mt-0.5">AOC-4, MGT-7, DIR-3 KYC & Governance</div>
+                  <div className="text-sm font-bold text-[#F5F8FF] mt-1.5">ROC & Corporate Law</div>
+                  <div className="text-[11px] text-[#91A4BD] mt-0.5">AOC-4, MGT-7, DIR-3 KYC & Secretarial</div>
                 </div>
 
                 {/* Income Tax Pillar Label */}
-                <div className="bg-[#07090C]/85 backdrop-blur-xl border border-cyan-500/30 p-3.5 rounded-xl hover:border-cyan-400/60 transition-all shadow-lg">
+                <div className="bg-[#0A1629] border border-[rgba(70,150,220,0.22)] hover:border-[#00D4FF]/60 p-4 rounded-xl transition-all shadow-corporate-card">
                   <div className="flex items-center justify-between text-[11px] font-mono">
-                    <span className="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400 font-semibold">
+                    <span className="px-2 py-0.5 rounded bg-[#00D4FF]/15 text-[#00D4FF] font-semibold">
                       DIRECT TAX
                     </span>
-                    <span className="text-white/40">PILLAR 03</span>
+                    <span className="text-[#91A4BD]">PILLAR 03</span>
                   </div>
-                  <div className="text-sm font-bold text-white mt-1.5">Direct Tax & Tax Advisory</div>
-                  <div className="text-[11px] text-white/50 mt-0.5">ITR-6, Form 15CB, TDS/TCS & Modeling</div>
+                  <div className="text-sm font-bold text-[#F5F8FF] mt-1.5">Direct Tax & Advisory</div>
+                  <div className="text-[11px] text-[#91A4BD] mt-0.5">ITR-6, Form 15CB, TDS/TCS & Modeling</div>
                 </div>
               </div>
             </motion.div>
           )}
 
-          {/* CHAPTER 04: 62 - 82% (Positioned on the LEFT while luminous light trails converge on the right) */}
+          {/* CHAPTER 04: 62 - 82% */}
           {activeChapter === 3 && (
             <motion.div
               key="chapter-4"
@@ -223,51 +227,51 @@ export const ChapterOverlays: React.FC<ChapterOverlaysProps> = ({
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               style={{ transform: `translateY(${(intraProgress - 0.5) * -15}px)` }}
-              className="pointer-events-auto max-w-xl ml-2 sm:ml-6 lg:ml-10 bg-[#07090C]/85 backdrop-blur-2xl border border-white/[0.1] p-8 rounded-2xl shadow-2xl"
+              className="pointer-events-auto max-w-xl ml-2 sm:ml-6 lg:ml-10 bg-[#0A1629] border border-[rgba(70,150,220,0.18)] p-8 rounded-xl shadow-corporate-card"
             >
-              <div className="flex items-center gap-2 text-xs font-mono text-[#00D6FF] mb-3">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#00D4FF] mb-3">
                 <TrendingUp className="w-4 h-4" />
                 <span>CHAPTER 04 // CONVERGENCE</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#F5F8FF] leading-tight">
                 Beyond <br />
                 <span className="text-gradient-cyan">compliance.</span>
               </h2>
 
-              <p className="mt-4 text-xs sm:text-sm text-white/75 leading-relaxed">
-                We don't stop at filing and reporting. We help businesses understand their numbers, manage risk, plan efficiently, and make better decisions.
+              <p className="mt-4 text-xs sm:text-sm text-[#91A4BD] leading-relaxed">
+                We don't stop at filing and reporting. We help leadership understand their financials, mitigate operational exposure, and structure growth.
               </p>
 
               {/* Connected Advisory Concepts */}
-              <div className="mt-6 flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/[0.08]">
+              <div className="mt-6 flex items-center justify-between p-3.5 rounded-lg bg-[#071225] border border-[rgba(70,150,220,0.18)]">
                 <div className="text-center flex-1">
-                  <div className="text-[10px] font-mono text-white/40">01</div>
-                  <div className="text-xs font-bold text-white mt-0.5">COMPLIANCE</div>
+                  <div className="text-[10px] font-mono text-[#91A4BD]">01</div>
+                  <div className="text-xs font-bold text-[#F5F8FF] mt-0.5">COMPLIANCE</div>
                 </div>
-                <div className="text-[#00D6FF] font-mono text-xs px-1">→</div>
+                <div className="text-[#00D4FF] font-mono text-xs px-1">→</div>
                 <div className="text-center flex-1">
-                  <div className="text-[10px] font-mono text-white/40">02</div>
-                  <div className="text-xs font-bold text-[#00D6FF] mt-0.5">ADVISORY</div>
+                  <div className="text-[10px] font-mono text-[#91A4BD]">02</div>
+                  <div className="text-xs font-bold text-[#00D4FF] mt-0.5">ADVISORY</div>
                 </div>
-                <div className="text-[#00D6FF] font-mono text-xs px-1">→</div>
+                <div className="text-[#00D4FF] font-mono text-xs px-1">→</div>
                 <div className="text-center flex-1">
-                  <div className="text-[10px] font-mono text-white/40">03</div>
-                  <div className="text-xs font-bold text-emerald-400 mt-0.5">GROWTH</div>
+                  <div className="text-[10px] font-mono text-[#91A4BD]">03</div>
+                  <div className="text-xs font-bold text-[#18C8A0] mt-0.5">GROWTH</div>
                 </div>
               </div>
 
-              {/* Supporting Services Pills */}
-              <div className="mt-4 flex flex-wrap gap-1.5 text-[10px] font-mono text-white/60">
+              {/* Supporting Services Badges */}
+              <div className="mt-4 flex flex-wrap gap-1.5 text-[10px] font-mono text-[#91A4BD]">
                 {[
                   'Tax Planning',
                   'Financial Reporting',
                   'Audit & Assurance',
                   'Business Structuring',
                   'Regulatory Advisory',
-                  'SME Advisory'
+                  'Virtual CFO'
                 ].map((s) => (
-                  <span key={s} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">
+                  <span key={s} className="px-2.5 py-1 rounded-md bg-[#071225] border border-[rgba(70,150,220,0.15)]">
                     {s}
                   </span>
                 ))}
@@ -275,7 +279,7 @@ export const ChapterOverlays: React.FC<ChapterOverlaysProps> = ({
             </motion.div>
           )}
 
-          {/* CHAPTER 05: 82 - 100% (Positioned on the LEFT, giving the glowing 3D logo center-stage) */}
+          {/* CHAPTER 05: 82 - 100% */}
           {activeChapter === 4 && (
             <motion.div
               key="chapter-5"
@@ -286,24 +290,24 @@ export const ChapterOverlays: React.FC<ChapterOverlaysProps> = ({
               style={{ transform: `translateY(${(intraProgress - 0.5) * -15}px)` }}
               className="text-left flex flex-col items-start pointer-events-auto max-w-xl lg:max-w-2xl ml-2 sm:ml-6 lg:ml-10"
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0050FF]/20 border border-[#00D6FF]/40 text-xs font-mono text-[#00D6FF] mb-6 backdrop-blur-xl shadow-lg">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#071225] border border-[rgba(70,150,220,0.25)] text-xs font-mono text-[#00D4FF] mb-5 shadow-sm">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>CHAPTER 05 // THE ASCENT</span>
+                <span>CHAPTER 05 // INSTITUTIONAL PARTNERSHIP</span>
               </div>
 
-              <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter text-white uppercase leading-[1.05] drop-shadow-2xl">
+              <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#F5F8FF] uppercase leading-[1.05]">
                 Build a <br />
                 <span className="text-gradient-cyan">Higher Tomorrow.</span>
               </h2>
 
-              <p className="mt-5 text-sm sm:text-base lg:text-lg text-white/75 max-w-lg font-normal leading-relaxed">
-                Trusted compliance and advisory for businesses ready to move forward.
+              <p className="mt-5 text-sm sm:text-base lg:text-lg text-[#91A4BD] max-w-lg font-normal leading-relaxed">
+                Trusted compliance and advisory architecture for businesses ready to move forward.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <button
                   onClick={onOpenAdvisor}
-                  className="px-7 py-3.5 rounded-full bg-gradient-to-r from-[#0050FF] to-[#00D6FF] text-white font-bold text-xs sm:text-sm shadow-glow-blue hover:shadow-[0_0_35px_rgba(0,214,255,0.5)] transition-all duration-300 active:scale-95 flex items-center gap-2"
+                  className="px-6 py-3 rounded-lg bg-[#1769FF] hover:bg-[#00D4FF] hover:text-[#030817] text-[#F5F8FF] font-semibold text-xs sm:text-sm shadow-[0_0_20px_rgba(23,105,255,0.3)] transition-all duration-300 active:scale-95 flex items-center gap-2 border border-[#00D4FF]/30"
                 >
                   <span>Talk to an Advisor</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -311,45 +315,20 @@ export const ChapterOverlays: React.FC<ChapterOverlaysProps> = ({
 
                 <button
                   onClick={onScrollToServices}
-                  className="px-7 py-3.5 rounded-full bg-[#07090C]/80 border border-white/[0.15] text-white font-semibold text-xs sm:text-sm hover:bg-white/[0.12] transition-all duration-300 active:scale-95 backdrop-blur-md"
+                  className="px-6 py-3 rounded-lg bg-[#071225]/85 hover:bg-[#0A1629] border border-[rgba(70,150,220,0.28)] text-[#F5F8FF] font-medium text-xs sm:text-sm transition-all duration-300 active:scale-95"
                 >
-                  Explore Our Services
+                  <span>Review All Practices</span>
                 </button>
-              </div>
-
-              {/* Brand signature lockup */}
-              <div className="mt-10 pt-6 border-t border-white/[0.08] flex flex-col items-start">
-                <div className="text-base font-bold tracking-[0.25em] text-white uppercase">
-                  ASCENT ADVISORS LLP
-                </div>
-                <div className="text-[11px] tracking-[0.28em] text-[#00D6FF] uppercase font-mono mt-1">
-                  COMPLIANCE | ADVISORY | GROWTH
-                </div>
-                <div className="text-[11px] text-white/40 italic mt-1">
-                  "Building a Higher Tomorrow."
-                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* Bottom Timeline Indicator */}
-      <div className="flex items-center justify-between border-t border-white/[0.08] pt-4 text-xs font-mono text-white/40">
-        <div className="flex items-center gap-2 text-[10px] sm:text-xs">
-          <span className={activeChapter === 0 ? 'text-[#00D6FF] font-bold' : ''}>01 IDENTITY</span>
-          <span className="text-white/20">/</span>
-          <span className={activeChapter === 1 ? 'text-[#00D6FF] font-bold' : ''}>02 COMPLEXITY</span>
-          <span className="text-white/20">/</span>
-          <span className={activeChapter === 2 ? 'text-[#00D6FF] font-bold' : ''}>03 ECOSYSTEM</span>
-          <span className="text-white/20">/</span>
-          <span className={activeChapter === 3 ? 'text-[#00D6FF] font-bold' : ''}>04 ADVISORY</span>
-          <span className="text-white/20">/</span>
-          <span className={activeChapter === 4 ? 'text-[#00D6FF] font-bold' : ''}>05 ASCENT</span>
-        </div>
-        <div className="flex items-center gap-2 text-[10px] sm:text-xs">
-          <span>CHAPTER 0{activeChapter + 1} / 05</span>
-        </div>
+      {/* Bottom Telemetry Footer */}
+      <div className="flex items-center justify-between text-[11px] font-mono text-[#91A4BD]/60 pb-4">
+        <span>FRAMEWORK: INDIAN CA & CS PRACTICE STANDARDS</span>
+        <span>CONFIDENTIAL & REGULATED</span>
       </div>
     </div>
   );

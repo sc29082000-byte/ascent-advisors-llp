@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import { Navbar } from './components/layout/Navbar';
 import { CanvasHero } from './components/hero/CanvasHero';
@@ -52,7 +52,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white selection:bg-[#0050FF]/30 selection:text-[#00D6FF]">
+    <div className="relative min-h-screen bg-[#030817] text-[#F5F8FF] selection:bg-[#1769FF]/30 selection:text-[#00D4FF] bg-corporate-ambient">
       {/* Fixed Apple-style Navigation */}
       <Navbar onOpenAdvisor={() => handleOpenAdvisor()} />
 
