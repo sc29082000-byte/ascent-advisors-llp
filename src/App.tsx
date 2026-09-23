@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import { Navbar } from './components/layout/Navbar';
 import { CanvasHero } from './components/hero/CanvasHero';
 import { ServicesSection } from './components/sections/ServicesSection';
-import { MsmeVerificationSection } from './components/sections/MsmeVerificationSection';
 import { AdvisorySection } from './components/sections/AdvisorySection';
 import { TrustSection } from './components/sections/TrustSection';
 import { WhoWeServeSection } from './components/sections/WhoWeServeSection';
@@ -68,9 +67,6 @@ export const App: React.FC = () => {
         <ServicesSection
           onOpenAdvisorWithService={(serviceName) => handleOpenAdvisor(serviceName)}
         />
-
-        {/* ICAI CAQC Compliance & MSME Section 43B(h) Verification Suite */}
-        <MsmeVerificationSection />
 
         {/* Strategic Advisory Progression: COMPLY -> UNDERSTAND -> OPTIMIZE -> GROW */}
         <AdvisorySection />
