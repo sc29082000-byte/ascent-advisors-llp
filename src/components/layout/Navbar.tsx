@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
@@ -20,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdvisor }) => {
   const navLinks = [
     { name: 'Overview', href: '#hero' },
     { name: 'Services', href: '#services' },
+    { name: 'MSME 43B(h)', href: '#msme-tool', badge: 'TOOL' },
     { name: 'Expertise', href: '#advisory' },
     { name: 'Governance', href: '#trust' },
     { name: 'Insights', href: '#insights' },
@@ -61,14 +62,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdvisor }) => {
         </a>
 
         {/* Center Nav Items */}
-        <nav className="hidden md:flex items-center gap-7 text-xs font-medium tracking-tight">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-xs font-medium tracking-tight">
           {navLinks.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-[#91A4BD] hover:text-[#F5F8FF] transition-colors duration-200 relative group py-1"
+              className="text-[#91A4BD] hover:text-[#F5F8FF] transition-colors duration-200 relative group py-1 flex items-center gap-1.5"
             >
-              {item.name}
+              <span>{item.name}</span>
+              {item.badge && (
+                <span className="px-1.5 py-0.5 rounded bg-[#1769FF]/20 text-[#00D4FF] border border-[#00D4FF]/40 text-[9px] font-mono font-bold leading-none shadow-[0_0_8px_rgba(0,212,255,0.2)]">
+                  {item.badge}
+                </span>
+              )}
               <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#00D4FF] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
@@ -117,9 +123,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdvisor }) => {
                 key={item.name}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-medium text-[#91A4BD] hover:text-[#00D4FF] py-2 border-b border-[rgba(70,150,220,0.1)]"
+                className="text-sm font-medium text-[#91A4BD] hover:text-[#00D4FF] py-2 border-b border-[rgba(70,150,220,0.1)] flex items-center justify-between"
               >
-                {item.name}
+                <span>{item.name}</span>
+                {item.badge && (
+                  <span className="px-1.5 py-0.5 rounded bg-[#1769FF]/20 text-[#00D4FF] border border-[#00D4FF]/40 text-[10px] font-mono font-bold leading-none">
+                    {item.badge}
+                  </span>
+                )}
               </a>
             ))}
           </div>
