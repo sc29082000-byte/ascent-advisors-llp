@@ -211,9 +211,9 @@ export const TRUST_METRICS: TrustMetric[] = [
     detail: 'Eliminating penal interest and department show-cause notices.'
   },
   {
-    value: '18+ Yrs',
+    value: '10+ Yrs',
     label: 'Senior Partner Experience',
-    sublabel: 'Decades of collective domain leadership',
+    sublabel: 'Over a decade of collective domain leadership',
     detail: 'Alumni of premier auditing firms and regulatory advisory bodies.'
   },
   {
