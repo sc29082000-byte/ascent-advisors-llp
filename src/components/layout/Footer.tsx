@@ -1,7 +1,11 @@
 ﻿import React from 'react';
 import { ShieldCheck, MapPin } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenPrivacyPolicy?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy }) => {
   return (
     <footer className="w-full bg-[#030817] text-[#91A4BD] border-t border-[rgba(70,150,220,0.18)] text-xs font-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-20">
@@ -112,7 +116,7 @@ export const Footer: React.FC = () => {
               © {new Date().getFullYear()} ASCENT ADVISORS LLP. All rights reserved. Building a Higher Tomorrow.
             </div>
             <div className="flex items-center gap-6 font-mono text-[10px]">
-              <span className="hover:text-[#00D4FF] cursor-pointer transition-colors">PRIVACY POLICY</span>
+              <button onClick={onOpenPrivacyPolicy} className="hover:text-[#00D4FF] cursor-pointer transition-colors uppercase">PRIVACY POLICY</button>
               <span className="hover:text-[#00D4FF] cursor-pointer transition-colors">TERMS OF ENGAGEMENT</span>
               <span className="hover:text-[#00D4FF] cursor-pointer transition-colors">STATUTORY DISCLOSURES</span>
             </div>

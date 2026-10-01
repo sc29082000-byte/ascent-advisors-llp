@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import { Navbar } from './components/layout/Navbar';
 import { CanvasHero } from './components/hero/CanvasHero';
@@ -10,14 +10,60 @@ import { InsightsSection } from './components/sections/InsightsSection';
 import { CtaSection } from './components/sections/CtaSection';
 import { Footer } from './components/layout/Footer';
 import { AdvisorModal } from './components/common/AdvisorModal';
+import { PrivacyPolicySection } from './components/sections/PrivacyPolicySection';
 
 export const App: React.FC = () => {
   const [isAdvisorOpen, setIsAdvisorOpen] = useState(false);
   const [advisorInitialService, setAdvisorInitialService] = useState<string | undefined>();
   const [advisorInitialSegment, setAdvisorInitialSegment] = useState<string | undefined>();
+  const [currentView, setCurrentView] = useState<'home' | 'privacy'>('home');
+
+  // Route listener for /privacy-policy, /privacy, and #privacy
+  useEffect(() => {
+    const checkRoute = () => {
+      const path = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      if (
+        path === '/privacy-policy' || 
+        path === '/privacy' || 
+        path.startsWith('/privacy-policy') ||
+        path.startsWith('/privacy') ||
+        hash === '#privacy' || 
+        hash === '#privacy-policy'
+      ) {
+        setCurrentView('privacy');
+      } else {
+        setCurrentView('home');
+      }
+    };
+
+    checkRoute();
+    window.addEventListener('popstate', checkRoute);
+    window.addEventListener('hashchange', checkRoute);
+    return () => {
+      window.removeEventListener('popstate', checkRoute);
+      window.removeEventListener('hashchange', checkRoute);
+    };
+  }, []);
+
+  const handleNavigateHome = () => {
+    setCurrentView('home');
+    if (window.location.pathname !== '/') {
+      window.history.pushState({}, '', '/');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigatePrivacy = () => {
+    setCurrentView('privacy');
+    window.history.pushState({}, '', '/privacy-policy');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Initialize Lenis smooth scroll
   useEffect(() => {
+    if (currentView !== 'home') return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -36,7 +82,7 @@ export const App: React.FC = () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
     };
-  }, []);
+  }, [currentView]);
 
   const handleOpenAdvisor = (service?: string, segment?: string) => {
     setAdvisorInitialService(service);
@@ -50,6 +96,25 @@ export const App: React.FC = () => {
       servicesEl.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (currentView === 'privacy') {
+    return (
+      <div className="relative min-h-screen bg-[#030817] text-[#F5F8FF] selection:bg-[#1769FF]/30 selection:text-[#00D4FF] bg-corporate-ambient">
+        <Navbar onOpenAdvisor={() => handleOpenAdvisor()} />
+        <PrivacyPolicySection 
+          onBackToHome={handleNavigateHome} 
+          onOpenAdvisor={() => handleOpenAdvisor()} 
+        />
+        <Footer onOpenPrivacyPolicy={handleNavigatePrivacy} />
+        <AdvisorModal
+          isOpen={isAdvisorOpen}
+          onClose={() => setIsAdvisorOpen(false)}
+          initialService={advisorInitialService}
+          initialSegment={advisorInitialSegment}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen bg-[#030817] text-[#F5F8FF] selection:bg-[#1769FF]/30 selection:text-[#00D4FF] bg-corporate-ambient">
@@ -90,7 +155,7 @@ export const App: React.FC = () => {
       </main>
 
       {/* Institutional Corporate Footer */}
-      <Footer />
+      <Footer onOpenPrivacyPolicy={handleNavigatePrivacy} />
 
       {/* Consultation Booking Modal */}
       <AdvisorModal
