@@ -52,7 +52,7 @@ export default {
       boxShadow: {
         'glow-blue': '0 0 24px -4px rgba(23, 105, 255, 0.3)',
         'glow-cyan': '0 0 24px -4px rgba(0, 212, 255, 0.25)',
-        'corporate-card': '0 8px 32px -4px rgba(2, 6, 23, 0.6)',
+        'corporate-card': '0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
         'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.45)',
       },
       backdropBlur: {

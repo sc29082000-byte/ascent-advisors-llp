@@ -8,6 +8,7 @@ import { TrustSection } from './components/sections/TrustSection';
 import { WhoWeServeSection } from './components/sections/WhoWeServeSection';
 import { InsightsSection } from './components/sections/InsightsSection';
 import { CtaSection } from './components/sections/CtaSection';
+import { ToolsSection } from './components/sections/ToolsSection';
 import { Footer } from './components/layout/Footer';
 import { AdvisorModal } from './components/common/AdvisorModal';
 import { PrivacyPolicySection } from './components/sections/PrivacyPolicySection';
@@ -99,8 +100,8 @@ export const App: React.FC = () => {
 
   if (currentView === 'privacy') {
     return (
-      <div className="relative min-h-screen bg-[#030817] text-[#F5F8FF] selection:bg-[#1769FF]/30 selection:text-[#00D4FF] bg-corporate-ambient">
-        <Navbar onOpenAdvisor={() => handleOpenAdvisor()} />
+      <div className="relative min-h-screen bg-[#F8FAFC] text-[#0F172A] selection:bg-[#1769FF]/30 selection:text-[#2563EB] bg-corporate-ambient">
+        {/* Privacy page carries its own header */}
         <PrivacyPolicySection 
           onBackToHome={handleNavigateHome} 
           onOpenAdvisor={() => handleOpenAdvisor()} 
@@ -117,7 +118,7 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#030817] text-[#F5F8FF] selection:bg-[#1769FF]/30 selection:text-[#00D4FF] bg-corporate-ambient">
+    <div className="relative min-h-screen bg-[#F8FAFC] text-[#0F172A] selection:bg-[#1769FF]/30 selection:text-[#2563EB] bg-corporate-ambient">
       {/* Fixed Apple-style Navigation */}
       <Navbar onOpenAdvisor={() => handleOpenAdvisor()} />
 
@@ -132,6 +133,9 @@ export const App: React.FC = () => {
         <ServicesSection
           onOpenAdvisorWithService={(serviceName) => handleOpenAdvisor(serviceName)}
         />
+
+        {/* Free tools on app.aca-ca.com: GST Health Checkup, MSME verifier */}
+        <ToolsSection />
 
         {/* Strategic Advisory Progression: COMPLY -> UNDERSTAND -> OPTIMIZE -> GROW */}
         <AdvisorySection />
