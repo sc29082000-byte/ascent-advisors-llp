@@ -20,6 +20,14 @@ const TOOLS = [
     points: ['Live Udyam verification', 'Form 3CD Clause 22 disallowance', 'Bulk screener & certificate vault'],
     cta: 'Open MSME verifier',
   },
+  {
+    href: `${APP}/tools/supplier-check`,
+    tag: 'New · Free', tagBg: '#EDE9FE', tagFg: '#6D28D9', check: '#7C3AED', btn: 'linear-gradient(135deg,#6D28D9,#2563EB)',
+    title: 'Supplier Compliance Check',
+    text: 'Find the suppliers who put your input tax credit at risk — invoices missing from GSTR-2B, late reporting, blocked credit — with a ready follow-up message for each.',
+    points: ['Supplier-wise risk from GSTR-2B', 'Purchase register vs 2B', 'Follow-up message + Excel'],
+    cta: 'Check my suppliers',
+  },
 ];
 
 /* Free tools hosted on app.aca-ca.com — one card each, linking out. */
@@ -38,7 +46,7 @@ export const ToolsSection: React.FC = () => (
         </p>
       </div>
 
-      <div className="mt-12 grid gap-7 lg:grid-cols-2">
+      <div className="mt-12 grid gap-7 lg:grid-cols-3">
         {TOOLS.map(t => (
           <a key={t.href} href={t.href} className="tool-card group relative flex flex-col rounded-3xl bg-white p-7 sm:p-9 border border-[#E2E8F0] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05),0_4px_6px_-2px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-1 hover:border-[#CBD5E1] hover:shadow-[0_24px_48px_-18px_rgba(15,23,42,0.16)]">
             <span className="self-start rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.14em] uppercase" style={{ background: t.tagBg, color: t.tagFg }}>{t.tag}</span>
