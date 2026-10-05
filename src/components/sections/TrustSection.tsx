@@ -77,7 +77,7 @@ export const TrustSection: React.FC = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
             {TRUST_METRICS.map((metric, idx) => (
               <div key={idx} className="border-l border-[#E2E8F0] pl-6">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight font-mono">
+                <div className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight font-mono break-words">
                   {metric.value}
                 </div>
                 <div className="text-xs font-semibold text-[#2563EB] mt-2">

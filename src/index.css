@@ -91,6 +91,15 @@
   }
 }
 
+/* The scroll hero keeps its original dark look: light text and the white-to-cyan gradient
+   (the light theme above recolours these utilities for the light sections only). */
+#hero { color: #F5F8FF; }
+#hero .text-gradient-cyan {
+  background: linear-gradient(135deg, #f5f8ff 20%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Light fintech background: soft sky-blue ambient light and a faint dot grid */
 .bg-corporate-ambient {
   background-color: #F8FAFC;

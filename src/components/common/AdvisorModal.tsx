@@ -1,6 +1,14 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
+import { SERVICES_DATA, CLIENT_SEGMENTS } from '../../data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, CheckCircle2, ArrowRight, ShieldCheck, Clock } from 'lucide-react';
+import { X, CheckCircle2, ArrowRight, ShieldCheck, Clock, Mail, MessageCircle } from 'lucide-react';
+
+const TEAM = { whatsapp: '919076010642', email: 'info@aca-ca.com' };
+const ENTITY_TYPES = ['Private Limited Company', 'Limited Liability Partnership (LLP)', 'Partnership Firm', 'Proprietorship', 'Public Limited Company', 'Foreign Subsidiary / Liaison Office', 'Startup / Founder'];
+const titleCase = (t: string) => t.toLowerCase().replace(/(^|[\s&/(-])\S/g, c => c.toUpperCase()).replace(/\b(Gst|Roc|Mca)\b/g, w => w.toUpperCase());
+const SERVICE_OPTIONS = SERVICES_DATA.map(s => titleCase(s.title));
+const SEGMENT_OPTIONS = CLIENT_SEGMENTS.map(s => s.name);
+const TURNOVER_OPTIONS = ['Under ₹1 Crore', '₹1 Crore - ₹5 Crore', '₹5 Crore - ₹25 Crore', '₹25 Crore - ₹100 Crore', 'Above ₹100 Crore'];
 
 interface AdvisorModalProps {
   isOpen: boolean;
@@ -15,20 +23,43 @@ export const AdvisorModal: React.FC<AdvisorModalProps> = ({
   initialService,
   initialSegment,
 }) => {
-  const [formData, setFormData] = useState({
-    entityType: 'Private Limited Company',
-    serviceNeed: initialService || 'GST & Income Tax Advisory',
-    segment: initialSegment || 'SMEs & Mid-Market',
+  const blank = () => ({
+    entityType: ENTITY_TYPES[0],
+    serviceNeed: SERVICE_OPTIONS.find(o => o.toLowerCase() === (initialService || '').toLowerCase()) || SERVICE_OPTIONS[0],
+    segment: SEGMENT_OPTIONS.find(o => o === initialSegment) || SEGMENT_OPTIONS[0],
     name: '',
     email: '',
     phone: '',
-    turnover: '₹15Cr - ₹125Cr',
+    turnover: TURNOVER_OPTIONS[0],
     notes: '',
   });
+  const [formData, setFormData] = useState(blank);
   const [submitted, setSubmitted] = useState(false);
+
+  // fresh form, with the clicked service / segment, every time it opens
+  useEffect(() => {
+    if (isOpen) { setFormData(blank()); setSubmitted(false); }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, initialService, initialSegment]);
+
+  // No backend on this static site: the enquiry goes to the team on WhatsApp (email as a fallback).
+  const message = () => [
+    'New consultation request (www.aca-ca.com)',
+    `Name: ${formData.name}`,
+    `Phone: ${formData.phone}`,
+    `Email: ${formData.email}`,
+    `Entity: ${formData.entityType}`,
+    `Segment: ${formData.segment}`,
+    `Service: ${formData.serviceNeed}`,
+    `Turnover: ${formData.turnover}`,
+    formData.notes ? `Notes: ${formData.notes}` : '',
+  ].filter(Boolean).join('\n');
+  const whatsappUrl = () => `https://wa.me/${TEAM.whatsapp}?text=${encodeURIComponent(message())}`;
+  const mailUrl = () => `mailto:${TEAM.email}?subject=${encodeURIComponent(`Consultation request – ${formData.serviceNeed}`)}&body=${encodeURIComponent(message())}`;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    window.open(whatsappUrl(), '_blank', 'noopener');
     setSubmitted(true);
   };
 
@@ -93,11 +124,7 @@ export const AdvisorModal: React.FC<AdvisorModalProps> = ({
                         onChange={(e) => setFormData({ ...formData, entityType: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#E2E8F0] text-xs sm:text-sm text-[#0F172A] focus:outline-none focus:border-[#2563EB] transition-colors"
                       >
-                        <option value="Private Limited Company" className="bg-white">Private Limited Company</option>
-                        <option value="Limited Liability Partnership (LLP)" className="bg-white">Limited Liability Partnership (LLP)</option>
-                        <option value="Public Limited Company" className="bg-white">Public Limited Company</option>
-                        <option value="Foreign Subsidiary / Liaison Office" className="bg-white">Foreign Subsidiary / Liaison Office</option>
-                        <option value="High-Growth Startup / Founder" className="bg-white">High-Growth Startup / Founder</option>
+                        {ENTITY_TYPES.map(o => <option key={o} value={o} className="bg-white">{o}</option>)}
                       </select>
                     </div>
 
@@ -110,10 +137,7 @@ export const AdvisorModal: React.FC<AdvisorModalProps> = ({
                         onChange={(e) => setFormData({ ...formData, segment: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#E2E8F0] text-xs sm:text-sm text-[#0F172A] focus:outline-none focus:border-[#2563EB] transition-colors"
                       >
-                        <option value="Startups & Founders" className="bg-white">Startups & Founders</option>
-                        <option value="Growing Businesses" className="bg-white">Growing Businesses</option>
-                        <option value="Mid-Market Enterprises" className="bg-white">Mid-Market Enterprises</option>
-                        <option value="Established Companies" className="bg-white">Established Companies</option>
+                        {SEGMENT_OPTIONS.map(o => <option key={o} value={o} className="bg-white">{o}</option>)}
                       </select>
                     </div>
                   </div>
@@ -128,12 +152,7 @@ export const AdvisorModal: React.FC<AdvisorModalProps> = ({
                       onChange={(e) => setFormData({ ...formData, serviceNeed: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#E2E8F0] text-xs sm:text-sm text-[#0F172A] focus:outline-none focus:border-[#2563EB] transition-colors"
                     >
-                      <option value="GST & Indirect Tax Compliance" className="bg-white">GST & Indirect Tax Compliance</option>
-                      <option value="MCA / ROC Secretarial Compliance" className="bg-white">MCA / ROC Secretarial Compliance</option>
-                      <option value="Corporate Direct Tax & International Tax" className="bg-white">Corporate Direct Tax & International Tax</option>
-                      <option value="Statutory & Tax Audit (Section 139 / 44AB)" className="bg-white">Statutory & Tax Audit (Section 139 / 44AB)</option>
-                      <option value="Business Incorporation & Setup" className="bg-white">Business Incorporation & Setup</option>
-                      <option value="Integrated Virtual CFO & Strategic Retainer" className="bg-white">Integrated Virtual CFO & Strategic Retainer</option>
+                      {SERVICE_OPTIONS.map(o => <option key={o} value={o} className="bg-white">{o}</option>)}
                     </select>
                   </div>
 
@@ -190,11 +209,7 @@ export const AdvisorModal: React.FC<AdvisorModalProps> = ({
                         onChange={(e) => setFormData({ ...formData, turnover: e.target.value })}
                         className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-[#E2E8F0] text-xs sm:text-sm text-[#0F172A] focus:outline-none focus:border-[#2563EB] transition-colors"
                       >
-                        <option value="Under ₹1 Crore" className="bg-white">Under ₹1 Crore</option>
-                        <option value="₹1 Crore - ₹5 Crore" className="bg-white">₹1 Crore - ₹5 Crore</option>
-                        <option value="₹5 Crore - ₹25 Crore" className="bg-white">₹5 Crore - ₹25 Crore</option>
-                        <option value="₹25 Crore - ₹100 Crore" className="bg-white">₹25 Crore - ₹100 Crore</option>
-                        <option value="Above ₹100 Crore" className="bg-white">Above ₹100 Crore</option>
+                        {TURNOVER_OPTIONS.map(o => <option key={o} value={o} className="bg-white">{o}</option>)}
                       </select>
                     </div>
                   </div>
@@ -240,20 +255,20 @@ export const AdvisorModal: React.FC<AdvisorModalProps> = ({
                 </div>
 
                 <div className="text-xs font-mono text-[#059669] uppercase tracking-wider mb-1">
-                  CONSULTATION REQUEST LOGGED
+                  ONE LAST STEP
                 </div>
 
                 <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] tracking-tight">
-                  Thank you, {formData.name || 'Partner'}.
+                  Thank you, {formData.name || 'there'}.
                 </h3>
 
                 <p className="text-xs sm:text-sm text-[#64748B] max-w-md mx-auto mt-2 leading-relaxed">
-                  Your advisory mandate for <span className="text-[#2563EB]">{formData.serviceNeed}</span> has been routed to our senior regulatory practice desk.
+                  Your request for <span className="text-[#2563EB]">{formData.serviceNeed}</span> is ready in WhatsApp — just tap <b>Send</b> there and our team will get back to you.
                 </p>
 
-                <div className="mt-5 p-3.5 rounded-lg bg-white border border-[#E2E8F0] max-w-xs mx-auto text-xs font-mono text-[#64748B] space-y-1">
-                  <div>REF: ASC-ADV-8942</div>
-                  <div className="text-[#059669]">STATUS: SCHEDULED</div>
+                <div className="mt-5 flex flex-wrap justify-center gap-2.5">
+                  <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-semibold"><MessageCircle className="w-4 h-4" /> Open WhatsApp again</a>
+                  <a href={mailUrl()} className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white hover:bg-[#F1F5F9] border border-[#E2E8F0] text-[#0F172A] text-xs font-semibold"><Mail className="w-4 h-4" /> Send by email instead</a>
                 </div>
 
                 <div className="mt-6">

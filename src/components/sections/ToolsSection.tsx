@@ -6,7 +6,7 @@ const APP = 'https://app.aca-ca.com';
 const TOOLS = [
   {
     href: `${APP}/tools/gst-health-checkup`,
-    tag: 'New · Free', tagBg: '#ECFDF5', tagFg: '#059669', check: '#10B981', btn: 'linear-gradient(135deg,#1E3A8A,#2563EB)',
+    tag: 'New · Free', tagBg: '#ECFDF5', tagFg: '#047857', check: '#10B981', btn: 'linear-gradient(135deg,#1E3A8A,#2563EB)',
     title: 'GST Health Checkup',
     text: 'Score your GST year in minutes — GSTR-1, GSTR-3B and GSTR-2B reconciled, optionally against your books, in one client-ready PDF report.',
     points: ['GSTR-1 vs 3B, ITC vs 2B, Table 6.1', 'Books upload with B2B / B2C template', 'Scored report with an action plan'],
@@ -33,7 +33,7 @@ export const ToolsSection: React.FC = () => (
         <h2 className="mt-5 text-3xl sm:text-5xl font-extrabold tracking-[-0.035em] leading-[1.08] text-[#0F172A]">
           Tools that do the <span className="text-gradient-blue">heavy lifting</span>.
         </h2>
-        <p className="mt-4 text-base sm:text-lg text-[#64748B] leading-relaxed">
+        <p className="mt-4 text-base sm:text-lg text-[#475569] leading-relaxed">
           Your files are read in your browser — nothing to install, no login needed.
         </p>
       </div>

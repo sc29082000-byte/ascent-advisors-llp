@@ -67,24 +67,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy }) => {
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-[#0F172A] font-medium text-[11px]">Mumbai</div>
-                  <div className="text-[10px] text-[#64748B]">Bandra Kurla Complex (BKC)</div>
+                  <div className="text-[#0F172A] font-medium text-[11px]">Thane, Maharashtra</div>
+                  <div className="text-[10px] text-[#64748B] leading-relaxed">Office No. 701, Tropical New Era Business Park,<br />Opp. ESIS Hospital, Wagle, Thane 400604</div>
                 </div>
               </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-[#0F172A] font-medium text-[11px]">Bengaluru</div>
-                  <div className="text-[10px] text-[#64748B]">Indiranagar / MG Road</div>
-                </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-[#0F172A] font-medium text-[11px]">Delhi NCR</div>
-                  <div className="text-[10px] text-[#64748B]">Cyber City / Connaught Place</div>
-                </div>
-              </div>
+              <a href="mailto:info@aca-ca.com" className="block hover:text-[#2563EB] transition-colors">info@aca-ca.com</a>
             </div>
           </div>
         </div>

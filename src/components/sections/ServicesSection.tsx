@@ -12,7 +12,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenAdvisorW
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
 
   return (
-    <section id="services" className="relative w-full py-32 bg-[#F8FAFC] text-[#0F172A] border-t border-[#E2E8F0]">
+    <section id="services" className="relative w-full py-32 bg-[#F8FAFC] text-[#0F172A] border-t border-[#E2E8F0] overflow-hidden">
       {/* Background subtle radial blue glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[#1769FF]/5 blur-[140px] pointer-events-none rounded-full" />
 

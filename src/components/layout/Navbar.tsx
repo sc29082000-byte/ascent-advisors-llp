@@ -20,10 +20,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdvisor }) => {
   const navLinks = [
     { name: 'Overview', href: '#hero' },
     { name: 'Services', href: '#services' },
+    { name: 'Tools', href: '#tools' },
     { name: 'Expertise', href: '#advisory' },
     { name: 'Governance', href: '#trust' },
     { name: 'Insights', href: '#insights' },
-    { name: 'Tools', href: '#tools' },
     { name: 'Contact', href: '#contact' },
   ];
 

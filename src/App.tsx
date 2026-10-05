@@ -123,6 +123,7 @@ export const App: React.FC = () => {
       <Navbar onOpenAdvisor={() => handleOpenAdvisor()} />
 
       <main>
+        <h1 className="sr-only">Ascent Advisors LLP — GST, Income Tax, Audit, ROC Compliance &amp; Business Advisory</h1>
         {/* Core Cinematic Hero: 520vh Sticky 300-Frame Scrollytelling Engine */}
         <CanvasHero
           onOpenAdvisor={() => handleOpenAdvisor()}

@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  base: './',
+  base: '/',   // absolute asset paths so deep links like /privacy-policy/ load correctly
   plugins: [react()],
   resolve: {
     alias: {
