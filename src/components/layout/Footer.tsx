@@ -52,11 +52,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacyPolicy }) => {
               <li><a href="#trust" className="hover:text-[#2563EB] transition-colors">Institutional Trust</a></li>
               <li><a href="#insights" className="hover:text-[#2563EB] transition-colors">Regulatory Dispatches</a></li>
               <li><a href="#contact" className="hover:text-[#2563EB] transition-colors">Consultation Desk</a></li>
-              <li><a href="https://app.aca-ca.com/tools/gst-health-checkup" className="hover:text-[#2563EB] transition-colors">GST Health Checkup</a></li>
-              <li><a href="https://app.aca-ca.com/tools" className="hover:text-[#2563EB] transition-colors">All tools</a></li>
-              <li><a href="https://app.aca-ca.com/tools/supplier-check" className="hover:text-[#2563EB] transition-colors">Supplier Check</a></li>
-              <li><a href="https://app.aca-ca.com/tools/gstin-verification" className="hover:text-[#2563EB] transition-colors">GSTIN Verification</a></li>
-              <li><a href="https://app.aca-ca.com/msme-verifier" className="hover:text-[#2563EB] transition-colors">MSME Verifier</a></li>
+              <li><a href="https://app.aca-ca.com/tools/gst-health-checkup" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">GST Health Checkup</a></li>
+              <li><a href="https://app.aca-ca.com/tools" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">All tools</a></li>
+              <li><a href="https://app.aca-ca.com/tools/supplier-check" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">Supplier Check</a></li>
+              <li><a href="https://app.aca-ca.com/tools/gstin-verification" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">GSTIN Verification</a></li>
+              <li><a href="https://app.aca-ca.com/msme-verifier" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">MSME Verifier</a></li>
               <li><a href="https://app.aca-ca.com/login" className="hover:text-[#2563EB] transition-colors">Staff / Client login</a></li>
               <li><a href="#hero" className="hover:text-[#2563EB] transition-colors">Regulatory Overview</a></li>
             </ul>

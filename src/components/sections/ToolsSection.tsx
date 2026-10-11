@@ -56,7 +56,7 @@ export const ToolsSection: React.FC = () => (
 
       <div className="mt-12 grid gap-7 lg:grid-cols-3">
         {TOOLS.map(t => (
-          <a key={t.href} href={t.href} className="tool-card group relative flex flex-col rounded-3xl bg-white p-7 sm:p-9 border border-[#E2E8F0] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05),0_4px_6px_-2px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-1 hover:border-[#CBD5E1] hover:shadow-[0_24px_48px_-18px_rgba(15,23,42,0.16)]">
+          <a key={t.href} href={t.href} target="_blank" rel="noopener noreferrer" className="tool-card group relative flex flex-col rounded-3xl bg-white p-7 sm:p-9 border border-[#E2E8F0] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05),0_4px_6px_-2px_rgba(0,0,0,0.02)] transition-all duration-500 hover:-translate-y-1 hover:border-[#CBD5E1] hover:shadow-[0_24px_48px_-18px_rgba(15,23,42,0.16)]">
             <span className="self-start rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.14em] uppercase" style={{ background: t.tagBg, color: t.tagFg }}>{t.tag}</span>
             <h3 className="mt-5 text-2xl sm:text-3xl font-extrabold tracking-[-0.03em] text-[#0F172A]">{t.title}</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-[#475569]">{t.text}</p>
