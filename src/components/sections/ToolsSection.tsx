@@ -36,14 +36,6 @@ const TOOLS = [
     points: ['Name, address and registration date', 'Active / cancelled / suspended + composition', 'Monthly or quarterly (QRMP) filing'],
     cta: 'Verify my GSTINs',
   },
-  {
-    href: `${APP}/tools/gst-json-to-excel`,
-    tag: 'New · Free', tagBg: '#CCFBF1', tagFg: '#0F766E', check: '#0D9488', btn: 'linear-gradient(135deg,#0F766E,#2563EB)',
-    title: 'GST JSON to Excel',
-    text: 'Turn GSTR-1 and GSTR-2B JSON files from the GST portal into clean, invoice-wise Excel. Add every month at once; amounts tie to the portal to the paise.',
-    points: ['All months in one workbook', 'B2B, credit notes, HSN, supplier-wise ITC', 'Several GSTINs of one PAN together'],
-    cta: 'Convert my files',
-  },
 ];
 
 /* Free tools hosted on app.aca-ca.com — one card each, linking out. */
