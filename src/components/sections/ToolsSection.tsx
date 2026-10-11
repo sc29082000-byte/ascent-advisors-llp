@@ -28,6 +28,22 @@ const TOOLS = [
     points: ['Supplier-wise risk from GSTR-2B', 'Purchase register vs 2B', 'Follow-up message + Excel'],
     cta: 'Check my suppliers',
   },
+  {
+    href: `${APP}/tools/gstin-verification`,
+    tag: 'New · Free', tagBg: '#FFEDD5', tagFg: '#C2410C', check: '#EA580C', btn: 'linear-gradient(135deg,#EA580C,#2563EB)',
+    title: 'Bulk GSTIN Verification',
+    text: 'Upload a list of GSTINs and get one Excel report from the official GST portal: name, address, registration date, active / cancelled / suspended, composition and QRMP. You only type the captcha.',
+    points: ['Name, address and registration date', 'Active / cancelled / suspended + composition', 'Monthly or quarterly (QRMP) filing'],
+    cta: 'Verify my GSTINs',
+  },
+  {
+    href: `${APP}/tools/gst-json-to-excel`,
+    tag: 'New · Free', tagBg: '#CCFBF1', tagFg: '#0F766E', check: '#0D9488', btn: 'linear-gradient(135deg,#0F766E,#2563EB)',
+    title: 'GST JSON to Excel',
+    text: 'Turn GSTR-1 and GSTR-2B JSON files from the GST portal into clean, invoice-wise Excel. Add every month at once; amounts tie to the portal to the paise.',
+    points: ['All months in one workbook', 'B2B, credit notes, HSN, supplier-wise ITC', 'Several GSTINs of one PAN together'],
+    cta: 'Convert my files',
+  },
 ];
 
 /* Free tools hosted on app.aca-ca.com — one card each, linking out. */
